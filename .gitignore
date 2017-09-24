@@ -1,0 +1,9 @@
+.gradle
+build
+out
+.idea
+.settings
+.classpath
+.project
+bin
+string-calculator.iml

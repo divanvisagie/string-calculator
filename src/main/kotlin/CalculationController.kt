@@ -2,9 +2,14 @@ package com.divanvisagie.example
 
 import tornadofx.Controller
 
+
 class CalculationController : Controller() {
-    fun writeToDb(inputValue: String, output: TextOutputControl) {
+    val calculator = Calculator()
+
+    fun calculate(inputValue: String, output: TextOutputControl) {
         println("Writing $inputValue to database!")
-        output.setText("I did stuff to " + inputValue)
+        val answer = calculator.add(inputValue).toString()
+
+        output.setText("Adding $inputValue results in: $answer")
     }
 }

@@ -1,6 +1,6 @@
 # String Calculater
 
-[![Build Status](https://travis-ci.org/divanvisagie/kotlin-tested-seed.svg?branch=master)](https://travis-ci.org/divanvisagie/kotlin-tested-seed)
+[![Build Status](https://travis-ci.org/divanvisagie/string-calculator.svg?branch=master)](https://travis-ci.org/divanvisagie/string-calculator)
 
 
 A GUI string calculator implemented in Kotlin

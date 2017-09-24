@@ -23,7 +23,7 @@ class MyView: View() {
             val inputField = textfield()
             button("Add") {
                 action {
-                    controller.writeToDb(inputField.text, output)
+                    controller.calculate(inputField.text, output)
                     inputField.clear()
                 }
             }

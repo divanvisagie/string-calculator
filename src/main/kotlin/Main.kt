@@ -6,17 +6,16 @@ import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 import tornadofx.*
 
-class MyController: Controller() {
-    fun writeToDb(inputValue: String) {
-        println("Writing $inputValue to database!")
-    }
+interface TextOutputControl {
+    fun setText(text: String)
 }
 
 class MyView: View() {
-    val controller: MyController by inject()
+    val controller: CalculationController by inject()
 
-    fun createCalculatorInputBox(): HBox {
+    fun createCalculatorInputBox(output: TextOutputControl): HBox {
 
+        val labelPadding = Insets(5.0,5.0,5.0,5.0)
 
         val calculatorInputBox = hbox {
             val addLabel = label("Add this stuff:")
@@ -24,29 +23,24 @@ class MyView: View() {
             val inputField = textfield()
             button("Add") {
                 action {
-                    controller.writeToDb(inputField.text)
+                    controller.writeToDb(inputField.text, output)
                     inputField.clear()
                 }
             }
         }
         val marginSize = 10.0
         calculatorInputBox.padding = Insets(marginSize,marginSize,marginSize,marginSize)
-
-
-
-
         return calculatorInputBox
     }
-    var a = createCalculatorInputBox()
 
     override val root = VBox()
 
-
-
-
     init {
+        val outputControl = OutputControlBox()
+
         with(root) {
-            this += createCalculatorInputBox()
+            this += createCalculatorInputBox(outputControl)
+            this += outputControl.hbox
         }
     }
 

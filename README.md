@@ -5,7 +5,7 @@
 
 A GUI string calculator implemented in Kotlin
 
-[!Screenshot](docs/images/screenshot.png)
+![Screenshot](docs/images/screenshot.png)
 
 ## Running
 

@@ -21,15 +21,17 @@ class MyView: View() {
             val addLabel = label("Add this stuff:")
             addLabel.padding = Insets(5.0,5.0,5.0,5.0)
             val inputField = textfield()
-            button("Add") {
+            val addButton = button("Add") {
                 action {
                     controller.calculate(inputField.text, output)
                     inputField.clear()
                 }
             }
+            addButton.padding = Insets(5.0,5.0,5.0,5.0)
         }
         val marginSize = 10.0
         calculatorInputBox.padding = Insets(marginSize,marginSize,marginSize,marginSize)
+        calculatorInputBox.spacing = 5.0
         return calculatorInputBox
     }
 

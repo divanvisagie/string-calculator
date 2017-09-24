@@ -1,10 +1,15 @@
 package com.divanvisagie.example
 
 class Calculator {
+    private var delimiter = ","
+
+    fun setDelimiter(d: String) {
+        delimiter = d
+    }
 
     fun separate(input: String): List<String> {
-        val separator = Regex(",")
-        return input.split(separator)
+        println(delimiter)
+        return input.split(delimiter)
     }
 
     fun parseStrings(input: List<String>): List<Int> {

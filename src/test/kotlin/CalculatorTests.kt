@@ -32,4 +32,11 @@ class CalculatorTests {
         Assert.assertEquals(6, answer)
     }
 
+    @Test
+    fun Add_1_and_1_using_custom_delimiter() {
+        var calculator = Calculator()
+        calculator.setDelimiter("|")
+        Assert.assertEquals(2,calculator.add("1|1"))
+    }
+
 }

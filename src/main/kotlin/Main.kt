@@ -1,9 +1,7 @@
 package com.divanvisagie.example
 
 import javafx.application.Application
-import javafx.geometry.Insets
-import javafx.scene.layout.HBox
-import javafx.scene.layout.VBox
+import javafx.scene.layout.*
 import tornadofx.*
 
 interface TextOutputControl {
@@ -13,36 +11,15 @@ interface TextOutputControl {
 class MyView: View() {
     val controller: CalculationController by inject()
 
-    fun createCalculatorInputBox(output: TextOutputControl): HBox {
-
-        val labelPadding = Insets(5.0,5.0,5.0,5.0)
-
-        val calculatorInputBox = hbox {
-            val addLabel = label("Add this stuff:")
-            addLabel.padding = Insets(5.0,5.0,5.0,5.0)
-            val inputField = textfield()
-            val addButton = button("Add") {
-                action {
-                    controller.calculate(inputField.text, output)
-                    inputField.clear()
-                }
-            }
-            addButton.padding = Insets(5.0,5.0,5.0,5.0)
-        }
-        val marginSize = 10.0
-        calculatorInputBox.padding = Insets(marginSize,marginSize,marginSize,marginSize)
-        calculatorInputBox.spacing = 5.0
-        return calculatorInputBox
-    }
-
     override val root = VBox()
 
     init {
         val outputControl = OutputControlBox()
+        val inputControl = InputControlBox(controller, outputControl)
 
         with(root) {
-            this += createCalculatorInputBox(outputControl)
-            this += outputControl.hbox
+            this += inputControl.box
+            this += outputControl.box
         }
     }
 
